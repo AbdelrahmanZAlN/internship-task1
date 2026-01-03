@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../register/presentation/components/ORComponent.dart';
+import '../components/SignInButtonComponent.dart';
+import '../components/SocialMediaComponent.dart';
 import '../models/login_screen_events.dart';
 import '../models/login_screen_state.dart';
 
@@ -101,224 +104,12 @@ class _LoginScreenRootState extends State<LoginScreenRoot> {
                             ),
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          spacing: 24,
-                          children: [
-                            CustomTextField(
-                              hint: 'Email',
-                              onChange: (text) {
-                                email = text;
-                              },
-                            ),
-                            CustomTextField(
-                              onChange: (text) {
-                                password = text;
-                              },
-                              hint: 'Password',
-                            ),
-                            Text(
-                              'Forgot Your Password ?!',
-                              textAlign: TextAlign.right,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                // keep sp value
-                                height: 24 / 16,
-                                // 1.5
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xA34D306C),
-                              ),
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateProperty.all(
-                              Color(0xFFAD46FF),
-                            ),
-                            padding: const WidgetStatePropertyAll(
-                              EdgeInsets.symmetric(vertical: 18),
-                            ),
-                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 8,
-                            children: [
-                              Text(
-                                'Get Started',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  height: 20 / 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Image.asset(
-                                AssetsData.buttonIconPng,
-                                width: 16,
-                                height: 16,
-                              ),
-                            ],
-                          ),
-                        ),
+                        UserInfoComponent(),
+                        SignInButtonComponent(),
                         //Social media
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          spacing: 32,
-                          children: [
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              // 40.dp
-                              height: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              padding: EdgeInsets.all(
-                                MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * 0.0204, // 8.dp
-                              ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFFF5ECFF),
-                                border: Border.all(
-                                  width: 1,
-                                  color: const Color(0xFF4D306C),
-                                ),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color(0x40000000),
-                                    blurRadius: 8,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Image.asset(
-                                AssetsData.socialGooglePng,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              // 40.dp
-                              height: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              padding: EdgeInsets.all(
-                                MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * 0.0204, // 8.dp
-                              ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFFF5ECFF),
-                                border: Border.all(
-                                  width: 1,
-                                  color: const Color(0xFF4D306C),
-                                ),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color(0x40000000),
-                                    blurRadius: 8,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Image.asset(
-                                AssetsData.twitterIconPng,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              // 40.dp
-                              height: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.102,
-                              padding: EdgeInsets.all(
-                                MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * 0.0204, // 8.dp
-                              ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFFF5ECFF),
-                                border: Border.all(
-                                  width: 1,
-                                  color: const Color(0xFF4D306C),
-                                ),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color(0x40000000),
-                                    blurRadius: 8,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Image.asset(
-                                AssetsData.facebookIconPng,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ],
-                        ),
+                        SocialMediaComponent(),
                         //--OR--
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          spacing: 8,
-                          children: [
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.356,
-                              height: 1,
-                              color: const Color(0xA36B4B8E),
-                            ),
-                            Text(
-                              'OR',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                height: 24 / 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xA36B4B8E),
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.356,
-                              height: 1,
-                              color: const Color(0xA36B4B8E),
-                            ),
-                          ],
-                        ),
+                        ORComponent(),
                         // Sign Up
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -363,3 +154,45 @@ class _LoginScreenRootState extends State<LoginScreenRoot> {
     );
   }
 }
+
+class UserInfoComponent extends StatelessWidget {
+  const UserInfoComponent({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      spacing: 24,
+      children: [
+        CustomTextField(
+          hint: 'Email',
+          onChange: (text) {
+          },
+        ),
+        CustomTextField(
+          onChange: (text) {
+          },
+          hint: 'Password',
+        ),
+        Text(
+          'Forgot Your Password ?!',
+          textAlign: TextAlign.right,
+          style: const TextStyle(
+            fontSize: 16,
+            // keep sp value
+            height: 24 / 16,
+            // 1.5
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w500,
+            color: Color(0xA34D306C),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+

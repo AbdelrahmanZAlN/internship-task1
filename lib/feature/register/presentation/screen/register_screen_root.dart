@@ -1,10 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/assets.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
+import '../components/ORComponent.dart';
+import '../components/SignUpButtonComponent.dart';
+import '../components/UserInfoComponent.dart';
 import '../models/register_screen_events.dart';
 import '../models/register_screen_state.dart';
 
@@ -102,130 +102,12 @@ class _RegisterScreenRootState extends State<RegisterScreenRoot> {
                             ),
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          spacing: 24,
-                          children: [
-                            CustomTextField(
-                              hint: 'Email',
-                              onChange: (text) {
-                                email = text;
-                              },
-                            ),
-                            Row(
-                              // spacing: 22,
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width * (170.9 / 393),
-                                  height: 56,
-                                  child: CustomTextField(
-                                    hint: 'First name',
-                                    onChange: (text) {
-                                      email = text;
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width * 0.056,
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width * (170.9 / 393),
-                                  height: 56,
-                                  child: CustomTextField(
-                                    hint: 'Last name',
-                                    onChange: (text) {
-                                      email = text;
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            CustomTextField(
-                              onChange: (text) {
-                                password = text;
-                              },
-                              hint: 'Password',
-                            ),
-                            CustomTextField(
-                              onChange: (text) {
-                                password = text;
-                              },
-                              hint: 'Confirm password',
-                            ),
-
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateProperty.all(
-                              Color(0xFFAD46FF),
-                            ),
-                            padding: const WidgetStatePropertyAll(
-                              EdgeInsets.symmetric(vertical: 18),
-                            ),
-                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 8,
-                            children: [
-                              Text(
-                                'Next',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  height: 20 / 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Image.asset(
-                                AssetsData.buttonIconPng,
-                                width: 16,
-                                height: 16,
-                              ),
-                            ],
-                          ),
-                        ),
+                        UserInfoComponent(),
+                        SignUpButtonComponent(),
 
                         //--OR--
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          spacing: 8,
-                          children: [
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.356,
-                              height: 1,
-                              color: const Color(0xA36B4B8E),
-                            ),
-                            Text(
-                              'OR',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                height: 24 / 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xA36B4B8E),
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.356,
-                              height: 1,
-                              color: const Color(0xA36B4B8E),
-                            ),
-                          ],
-                        ),
-                        // Sign Up
+                        ORComponent(),
+                        // Sign in
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 8,
@@ -269,3 +151,6 @@ class _RegisterScreenRootState extends State<RegisterScreenRoot> {
     );
   }
 }
+
+
+
